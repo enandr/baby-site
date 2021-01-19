@@ -1,11 +1,16 @@
-$height: calc(33vh - 18px);
+$wrapperHeight: calc(100vh - 56px);
 $bg-color: #30475e;
-.section{
-  min-height: $height;
+.wrapper {
+  height: $wrapperHeight;
   overflow: hidden;
 }
+.section{
+  height: 33%;
+  min-height: 33%;
+  max-height: 33%;
+}
 .section-0 {
-  height: $height;
+  height: 100%;
   background-color: rgb(24, 24, 24);
   color: #ececec;
 }
@@ -14,7 +19,7 @@ $bg-color: #30475e;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: $height;
+  height: 100%;
   background-color: rgb(24, 24, 24);
   color: #f2a365;
   transition: all .2s ease-in-out;
@@ -24,7 +29,7 @@ $bg-color: #30475e;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: $height;
+  height: 100%;
   background-color: rgb(24, 24, 24);
   color: #f2a365;
   transition: all .2s ease-in-out;
