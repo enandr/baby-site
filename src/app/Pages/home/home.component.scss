@@ -1,11 +1,12 @@
 $height: calc(33vh - 18px);
+$bg-color: #30475e;
 .section{
   min-height: $height;
   overflow: hidden;
 }
 .section-0 {
   height: $height;
-  background-color: black;
+  background-color: rgb(24, 24, 24);
   color: #ececec;
 }
 .section-1 {
@@ -14,17 +15,17 @@ $height: calc(33vh - 18px);
   background-size: cover;
   background-repeat: no-repeat;
   height: $height;
-  background-color: transparent;
+  background-color: rgb(24, 24, 24);
   color: #f2a365;
   transition: all .2s ease-in-out;
 }
 .section-2 {
-  background-image: url('https://i.ytimg.com/vi/msjJIQ_xd5Y/maxresdefault.jpg');
+  // background-image: url('https://i.ytimg.com/vi/msjJIQ_xd5Y/maxresdefault.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: $height;
-  background-color: transparent;
+  background-color: rgb(24, 24, 24);
   color: #f2a365;
   transition: all .2s ease-in-out;
 }
@@ -42,5 +43,10 @@ $height: calc(33vh - 18px);
 .right {
   text-align: right;
 }
-.wrapper {
+.alert-custom{
+  position: absolute;
+  top: 56px;
+  left: 2px;
+  width: 100%;
+  z-index: 1000;
 }

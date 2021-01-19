@@ -13,7 +13,7 @@ $link-color: #ececec;
   a:active {
     color: #ececec;
   }
-  background-color: #30475e;
+  background-color: #222831;
 
 }
 .text-names{
@@ -23,6 +23,11 @@ $link-color: #ececec;
 }
 .text-registry{
   color: rgb(64, 255, 0) !important;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.text-gender-reveal{
+  color: rgb(255, 25, 0) !important;
   font-weight: bold;
   text-decoration: underline;
 }

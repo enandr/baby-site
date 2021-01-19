@@ -11,12 +11,13 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.links = [
-      { url: '/announcements', title: 'ANNOUNCEMENTS'},
-      { url: '/events', title: 'EVENTS' },
-      { url: '/photos', title: 'PHOTOS' },
-      { url: '/progress', title: 'PROGRESS' },
-      { url: '/suggest-a-name', title: 'SUGGEST A NAME', class: 'text-names' },
-      { url: 'https://buybuybaby.com', title: 'GIFT REGISTRY', class: 'text-registry' },
+      { url: '/announcements', title: 'ANNOUNCEMENTS', active: true},
+      { url: '/events', title: 'EVENTS', active: true  },
+      { url: '/photos', title: 'PHOTOS', active: true  },
+      { url: '/progress', title: 'PROGRESS', active: true  },
+      { url: '/suggest-a-name', title: 'SUGGEST A NAME', class: 'text-names', active: true  },
+      { url: 'https://buybuybaby.com', title: 'GIFT REGISTRY', class: 'text-registry', active: true  },
+      { url: '/gender-reveal', title: 'GENDER REVEAL', class: 'text-gender-reveal', active: false },
     ];
   }
 
