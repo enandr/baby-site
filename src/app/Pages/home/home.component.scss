@@ -1,13 +1,19 @@
+$height: calc(33vh - 18px);
 .section{
-  min-height: calc(50vh - 28px);
+  min-height: $height;
   overflow: hidden;
+}
+.section-0 {
+  height: $height;
+  background-color: black;
+  color: #f2a365;
 }
 .section-1 {
   background-image: url('https://i.ytimg.com/vi/msjJIQ_xd5Y/maxresdefault.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: calc(50vh - 28px);
+  height: $height;
   background-color: transparent;
   color: #f2a365;
   transition: all .2s ease-in-out;
@@ -17,7 +23,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: calc(50vh - 28px);
+  height: $height;
   background-color: transparent;
   color: #f2a365;
   transition: all .2s ease-in-out;

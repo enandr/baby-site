@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  links: any[];
   constructor() { }
 
   ngOnInit(): void {
+    this.links = [
+      { url: '/announcements', title: 'ANNOUNCEMENTS'},
+      { url: '/events', title: 'EVENTS' },
+      { url: '/photos', title: 'PHOTOS' },
+      { url: '/progress', title: 'PROGRESS' },
+      { url: 'https://buybuybaby.com', title: 'GIFT REGISTRY' },
+      { url: '/suggest-a-name', title: 'SUGGEST A NAME' },
+    ];
   }
 
 }

@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Theme/navbar/navbar.component';
 import { HomeComponent } from './Pages/home/home.component';
+import { ProgressDateComponent } from './Components/progress-date/progress-date.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    ProgressDateComponent
   ],
   imports: [
     BrowserModule,
