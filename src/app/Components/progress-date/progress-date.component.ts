@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-progress-date',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./progress-date.component.scss']
 })
 export class ProgressDateComponent implements OnInit {
-
-  constructor() { }
+  @Input() date: string;
+  @Input() description: string;
+  @Input() visible: boolean;
+  constructor() {}
 
   ngOnInit(): void {
+    if (!this.visible){
+      this.visible = true;
+    }
   }
 
 }

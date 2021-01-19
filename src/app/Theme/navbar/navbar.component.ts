@@ -15,8 +15,8 @@ export class NavbarComponent implements OnInit {
       { url: '/events', title: 'EVENTS' },
       { url: '/photos', title: 'PHOTOS' },
       { url: '/progress', title: 'PROGRESS' },
-      { url: 'https://buybuybaby.com', title: 'GIFT REGISTRY' },
-      { url: '/suggest-a-name', title: 'SUGGEST A NAME' },
+      { url: '/suggest-a-name', title: 'SUGGEST A NAME', class: 'text-names' },
+      { url: 'https://buybuybaby.com', title: 'GIFT REGISTRY', class: 'text-registry' },
     ];
   }
 

@@ -1,13 +1,14 @@
-.navbar {
-  color: #ececec;
+$link-color: #ececec;
+.navbar-bg {
+  color: $link-color;
   a:link {
-    color: #ececec;
+    color: $link-color;
   }
   a:visited {
-    color: #ececec;
+    color: $link-color;
   }
-  a:hover {
-    color: #c1c1c1;
+  :not(:first-child) a:hover {
+    filter: brightness(70%);
   }
   a:active {
     color: #ececec;
@@ -15,9 +16,13 @@
   background-color: #30475e;
 
 }
-.text-registry{
-  color: green !important;
-}
 .text-names{
-  color: rebeccapurple !important;
+  color: rgb(0, 217, 255) !important;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.text-registry{
+  color: rgb(64, 255, 0) !important;
+  font-weight: bold;
+  text-decoration: underline;
 }
