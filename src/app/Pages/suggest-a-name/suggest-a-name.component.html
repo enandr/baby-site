@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <form name='babyNameForm' class='w-50'>
+      <div class="form-group">
+        <label for="yourName">Your Name</label>
+        <input type="text" name="yourName" class="form-control" [(ngModel)]="suggestorName" id="yourName" placeholder="Your Name">
+      </div>
+      <div class="form-group">
+        <label for="babyName">Baby Name Suggestion</label>
+        <input type="text" name="babyName" class="form-control" [(ngModel)]="babyName" id="babyName" placeholder="Baby Name Suggestion">
+      </div>
+      <div class="form-group">
+        <label for="maleFemaleSelect">Male Or Female</label>
+        <select name="maleFemaleSelect" [(ngModel)]="gender" class="form-control" id="maleFemaleSelect">
+          <option>Boy</option>
+          <option>Girl</option>
+        </select>
+      </div>
+      <div class="form-group d-flex justify-content-center align-items-center">
+        <button type="button" class="btn btn-info mr-3" (click)="onSubmit($event)">Submit</button>
+        <a href="/viewnames">View Names</a>
+      </div>
+    </form>
+  </div>
+</div>
