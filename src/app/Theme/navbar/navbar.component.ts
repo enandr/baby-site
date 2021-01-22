@@ -19,6 +19,14 @@ export class NavbarComponent implements OnInit {
       { url: 'https://buybuybaby.com', title: 'GIFT REGISTRY', class: 'text-registry', active: true  },
       { url: '/genderreveal', title: 'GENDER REVEAL', class: 'text-gender-reveal', active: false },
     ];
+    this.links.map((link, index) => {
+      if (link.active === false){
+        this.links.splice(index, 1);
+      }
+    })
+    if (window.sessionStorage.getItem('admin') === 'true'){
+      this.links.push({ url: '/admin', title: 'ADMIN', class: 'text-gender-reveal', active: true })
+    }
   }
 
 }

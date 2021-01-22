@@ -38,4 +38,20 @@ app.post("/babynames", (req, res) => {
   })
 })
 
+app.get("/progress", (req, res) => {
+  connection.query('Select * from progress', function (err, rows, fields) {
+    if (err) throw err
+    var returnedRows = rows;
+    res.send(returnedRows);
+  })
+});
+
+app.post("/progress", (req, res) => {
+  connection.query("INSERT INTO `expanding_family`.`progress` (`progress_title`, `progress_details`, `progress_date`) VALUES ('" + req.body.progress_title + "', '" + req.body.progress_details + "', '" + req.body.progress_date + "')", function (err, rows, fields) {
+    if (err) throw err
+    // var returnedRows = rows;
+    // res.send(returnedRows);
+    res.send('Success');
+  })
+})
 app.listen(port, () => console.log("listening on port: " + port))

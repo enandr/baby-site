@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <form name='babyNameForm' class='w-50'>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" class="form-control" [(ngModel)]="progressTitle" id="title"
+          placeholder="Your Name">
+      </div>
+      <div class="form-group">
+        <label for="details">Details</label>
+        <input type="text" name="details" class="form-control" [(ngModel)]="progressDetails" id="details"
+          placeholder="Baby Name Suggestion">
+      </div>
+      <div class="form-group">
+        <label for="start">Progress Date:</label>
+        <input type="date" [(ngModel)]="progressDate" id="date" name="date">
+      </div>
+      <div class="form-group d-flex justify-content-center align-items-center">
+        <button type="button" class="btn btn-info" (click)="onSubmit($event)">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

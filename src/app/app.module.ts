@@ -9,6 +9,7 @@ import { HomeComponent } from './Pages/home/home.component';
 import { ProgressDateComponent } from './Pages/progress-date/progress-date.component';
 import { SuggestANameComponent } from './Pages/suggest-a-name/suggest-a-name.component';
 import { ViewNamesComponent } from './Pages/view-names/view-names.component';
+import { AdminComponent } from './Pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ViewNamesComponent } from './Pages/view-names/view-names.component';
     HomeComponent,
     ProgressDateComponent,
     SuggestANameComponent,
-    ViewNamesComponent
+    ViewNamesComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
