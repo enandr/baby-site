@@ -9,14 +9,20 @@ export class AdminComponent implements OnInit {
   progressTitle: string;
   progressDetails: string;
   progressDate: any;
+  isAdmin = false;
   constructor(private progressService: ProgressService) { }
 
   ngOnInit(): void {
+    if (window.sessionStorage.getItem('admin') === 'true'){
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
   }
 
   async onSubmit(event) {
-    console.log(this.progressTitle, this.progressDetails, this.progressDate);
-    await this.progressService.post(this.progressTitle, this.progressDetails, this.progressDate)
+    let date = this.progressDate.slice(5, 7) + '/' + this.progressDate.slice(8) + '/' + this.progressDate.slice(0,4);
+    await this.progressService.post(this.progressTitle, this.progressDetails, date)
       .then(() => {
         this.progressTitle = undefined;
         this.progressDetails = undefined;
