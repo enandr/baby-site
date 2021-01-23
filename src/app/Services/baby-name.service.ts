@@ -48,7 +48,7 @@ export class BabyNameService {
     })
     const options = {
       headers: { "Content-type": "application/json; charset=UTF-8" },
-      method: 'post',
+      method: 'delete',
       body: postBody
     }
     await fetch('http://3.134.168.146:9000/babynames', options)

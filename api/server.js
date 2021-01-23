@@ -63,4 +63,13 @@ app.post("/progress", (req, res) => {
     res.send('Success');
   })
 })
+
+app.delete("/progress", (req, res) => {
+  connection.query("DELETE FROM `expanding_family`.`progress` WHERE (`id` = '" + req.body.id + "')", function (err, rows, fields) {
+    if (err) throw err
+    // var returnedRows = rows;
+    // res.send(returnedRows);
+    res.send('Success');
+  })
+})
 app.listen(port, () => console.log("listening on port: " + port))

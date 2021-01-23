@@ -7,9 +7,15 @@ import { BabyNameService } from '../../../app/Services/baby-name.service';
 })
 export class ViewNamesComponent implements OnInit {
   babyNames: any[];
+  isAdmin = false;
   constructor(private babyNameService: BabyNameService) { }
 
   ngOnInit(): void {
+    if (window.sessionStorage.getItem('admin') === 'true') {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
     this.getNames();
   }
 
