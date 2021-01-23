@@ -44,7 +44,7 @@ export class BabyNameService {
     let toReturn = null;
     console.log(id);
     const postBody = JSON.stringify({
-      "name_id": id
+      "id": id
     })
     const options = {
       headers: { "Content-type": "application/json; charset=UTF-8" },
