@@ -26,9 +26,10 @@ export class ActiveService {
         "progress": progress + '',
         "announcments": announcements + '',
         "events": events + '',
-        "registry": registry,
-        "registry_url": registry_url
+        "registry": registry + '',
+        "registry_url": registry_url + ''
     })
+    console.log(registry_url);
     const options = {
       headers: { "Content-type": "application/json; charset=UTF-8" },
       method: 'put',
