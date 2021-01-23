@@ -31,7 +31,6 @@ export class AdminComponent implements OnInit {
     await this.activeService.get()
       .then(res => {
         res = res[0];
-        console.log(res);
         res.name_suggestion = (res.name_suggestion == 'true');
         res.gender_reveal = (res.gender_reveal == 'true');
         res.announcments = (res.announcments == 'true');
@@ -59,6 +58,7 @@ export class AdminComponent implements OnInit {
   async onSave() {
     await this.activeService.update(this.activeName, this.activeGender, this.activeProgress, this.activeAnnouncements, this.activeEvent)
       .then(res => {
+        location.reload();
       })
       .catch(err => console.log(err));
   }
