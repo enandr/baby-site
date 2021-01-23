@@ -81,4 +81,13 @@ app.get("/active", (req, res) => {
   })
 });
 
+app.put("/progress", (req, res) => {
+  connection.query("UPDATE `expanding_family`.`active_items` SET `name_suggestion` = '" + req.body.name_suggestion + "', `gender_reveal` = '" + req.body.gender_reveal + "', `progress` = '" + req.body.progress + "', `announcments` = '" + req.body.announcments + "', `events` = '" + req.body.events + "' WHERE (`id` = '" + req.body.id + "')", function (err, rows, fields) {
+    if (err) throw err
+    // var returnedRows = rows;
+    // res.send(returnedRows);
+    res.send('Success');
+  })
+})
+
 app.listen(port, () => console.log("listening on port: " + port))

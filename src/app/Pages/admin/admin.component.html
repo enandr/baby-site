@@ -24,6 +24,33 @@
     </div>
   </div>
   <div class="section">
+    <form>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" [(ngModel)]="activeAnnouncements" (change)="onChange($event, 'activeAnnouncements')" name="announcementsCheck" id="announcementsCheck">
+        <label class="form-check-label" for="announcementsCheck">Announcements</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" [(ngModel)]="activeEvent" name="eventsCheck" (change)="onChange($event, 'activeEvent')" class="form-check-input" id="eventsCheck">
+        <label class="form-check-label" for="eventsCheck">Events</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" [(ngModel)]="activeProgress" name="progressCheck" (change)="onChange($event, 'activeProgress')" class="form-check-input" id="progressCheck">
+        <label class="form-check-label" for="progressCheck">Progress</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" [(ngModel)]="activeName" name="nameCheck" (change)="onChange($event, 'activeName')" class="form-check-input" id="nameCheck">
+        <label class="form-check-label" for="nameCheck">Name Suggested</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" [(ngModel)]="activeGender" name="genderCheck" (change)="onChange($event, 'activeGender')" class="form-check-input" id="genderCheck">
+        <label class="form-check-label" for="genderCheck">Gender Reveal</label>
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-info" (click)="onSave($event)">Save</button>
+      </div>
+    </form>
+  </div>
+  <div class="section">
     <h1 class="text-center">Add A Photo</h1>
   </div>
   <div class="section">
