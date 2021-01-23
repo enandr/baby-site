@@ -38,6 +38,15 @@ app.post("/babynames", (req, res) => {
   })
 })
 
+app.delete("/babynames", (req, res) => {
+  connection.query("DELETE FROM `expanding_family`.`baby_names` WHERE (`id` = '" + req.body.name_id + "')", function (err, rows, fields) {
+    if (err) throw err
+    // var returnedRows = rows;
+    // res.send(returnedRows);
+    res.send('Success');
+  })
+})
+
 app.get("/progress", (req, res) => {
   connection.query('Select * from progress', function (err, rows, fields) {
     if (err) throw err

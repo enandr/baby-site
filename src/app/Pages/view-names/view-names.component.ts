@@ -9,8 +9,19 @@ export class ViewNamesComponent implements OnInit {
   babyNames: any[];
   constructor(private babyNameService: BabyNameService) { }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
+    this.getNames();
+  }
+
+  async getNames(): Promise<void> {
     this.babyNames = await this.babyNameService.get();
   }
 
+  async onSubmit(event, id) {
+    await this.babyNameService.delete(id)
+      .then(() => {
+        this.getNames();
+      })
+      .catch(err => console.log(err));
+  }
 }
