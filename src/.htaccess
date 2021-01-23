@@ -1,0 +1,7 @@
+RewriteEngine On
+
+#RewriteCOnd %{REQUEST_FILENAME} !-d
+RewriteCOnd %{REQUEST_FILENAME} !-f
+RewriteCOnd %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.*)$ index.html?url=$1 [QSA,L]
