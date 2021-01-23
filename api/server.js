@@ -72,4 +72,13 @@ app.delete("/progress", (req, res) => {
     res.send('Success');
   })
 })
+
+app.get("/active", (req, res) => {
+  connection.query('Select * from active', function (err, rows, fields) {
+    if (err) throw err
+    var returnedRows = rows;
+    res.send(returnedRows);
+  })
+});
+
 app.listen(port, () => console.log("listening on port: " + port))

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActiveService } from '../../Services/active.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -7,13 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   links: any[];
-  constructor() { }
+  suggestANameActive: boolean;
+  genderRevealActive: boolean;
+  constructor(private activeService: ActiveService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.activeService.get()
+      .then(res => {
+        console.log(res);
+        this.suggestANameActive = res.name_suggestion;
+        this.genderRevealActive = res.gender_reveal;
+      });
+
     this.links = [
-      { url: '/announcements', title: 'ANNOUNCEMENTS', active: true},
-      { url: '/events', title: 'EVENTS', active: true  },
-      { url: '/photos', title: 'PHOTOS', active: true  },
+      { url: '/announcements', title: 'ANNOUNCEMENTS', active: false},
+      { url: '/events', title: 'EVENTS', active: false  },
+      { url: '/photos', title: 'PHOTOS', active: false  },
       { url: '/progress', title: 'PROGRESS', active: true  },
       { url: '/suggestaname', title: 'SUGGEST A NAME', class: 'text-names', active: true  },
       { url: 'https://buybuybaby.com', title: 'GIFT REGISTRY', class: 'text-registry', active: true  },
