@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +7,4 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   title = 'baby-site';
-  allowAccess = false;
-  ngOnInit(): void {
-    if (window.sessionStorage.getItem('devMode') === 'true'){
-      this.allowAccess = true;
-    }
-    else {
-      this.allowAccess = false;
-    }
-  }
 }
