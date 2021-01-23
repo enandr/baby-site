@@ -15,6 +15,8 @@ export class AdminComponent implements OnInit {
   activeProgress: boolean;
   activeName: boolean;
   activeGender: boolean;
+  activeRegistry: boolean;
+  registryUrl: string;
   isAdmin = false;
   constructor(private progressService: ProgressService, private activeService: ActiveService) { }
 
@@ -36,6 +38,9 @@ export class AdminComponent implements OnInit {
         res.announcments = (res.announcments == 'true');
         res.events = (res.events == 'true');
         res.progress = (res.progress == 'true');
+        res.registry = (res.registry == 'true');
+        this.registryUrl = res.registry_url;
+        this.activeRegistry = res.registry;
         this.activeAnnouncements = res.announcments;
         this.activeEvent = res.events;
         this.activeProgress = res.progress;
@@ -56,16 +61,12 @@ export class AdminComponent implements OnInit {
   }
 
   async onSave() {
-    await this.activeService.update(this.activeName, this.activeGender, this.activeProgress, this.activeAnnouncements, this.activeEvent)
+    await this.activeService.update(this.activeName, this.activeGender, this.activeProgress, this.activeAnnouncements, this.activeEvent, this.activeRegistry, this.registryUrl)
       .then(res => {
         location.reload();
       })
       .catch(err => console.log(err));
   }
 
-  onChange(event, activeToChange) {
-    console.log(activeToChange, this[activeToChange]);
-
-  }
 
 }

@@ -12,6 +12,8 @@ export class NavbarComponent implements OnInit {
   progressActive: boolean;
   eventsActive: boolean;
   announcementsActive: boolean;
+  registryActive: boolean;
+  registryUrl: string;
   constructor(private activeService: ActiveService) { }
 
   async ngOnInit(): Promise<void> {
@@ -23,6 +25,9 @@ export class NavbarComponent implements OnInit {
         res.announcments = (res.announcments == 'true');
         res.events = (res.events == 'true');
         res.progress = (res.progress == 'true');
+        res.registry = (res.registry == 'true');
+        this.registryActive = res.registry;
+        this.registryUrl = res.registry_url;
         this.suggestANameActive = res.name_suggestion;
         this.genderRevealActive = res.gender_reveal;
         this.progressActive = res.progress;
@@ -36,7 +41,7 @@ export class NavbarComponent implements OnInit {
       { url: '/photos', title: 'PHOTOS', active: false  },
       { url: '/progress', title: 'PROGRESS', active: this.progressActive  },
       { url: '/suggestaname', title: 'SUGGEST A NAME', class: 'text-names', active: this.suggestANameActive  },
-      { url: 'https://buybuybaby.com', title: 'GIFT REGISTRY', class: 'text-registry', active: true  },
+      { url: this.registryUrl, title: 'GIFT REGISTRY', class: 'text-registry', active: this.registryActive  },
       { url: '/genderreveal', title: 'GENDER REVEAL', class: 'text-gender-reveal', active: this.genderRevealActive },
     ];
     this.links.map((link, index) => {

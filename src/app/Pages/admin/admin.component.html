@@ -5,13 +5,11 @@
       <form name="babyNameForm" class="w-50">
         <div class="form-group">
           <label for="title">Title</label>
-          <input type="text" name="title" class="form-control" [(ngModel)]="progressTitle" id="title"
-            placeholder="Title">
+          <input type="text" name="title" class="form-control" [(ngModel)]="progressTitle" id="title" placeholder="Title">
         </div>
         <div class="form-group">
           <label for="details">Details</label>
-          <input type="text" name="details" class="form-control" [(ngModel)]="progressDetails" id="details"
-            placeholder="Details">
+          <input type="text" name="details" class="form-control" [(ngModel)]="progressDetails" id="details" placeholder="Details">
         </div>
         <div class="form-group">
           <label for="date">Progress Date:</label>
@@ -26,24 +24,32 @@
   <div class="section">
     <form>
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" [(ngModel)]="activeAnnouncements" (change)="onChange($event, 'activeAnnouncements')" name="announcementsCheck" id="announcementsCheck">
+        <input type="checkbox" class="form-check-input" [(ngModel)]="activeAnnouncements" name="announcementsCheck" id="announcementsCheck">
         <label class="form-check-label" for="announcementsCheck">Announcements</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" [(ngModel)]="activeEvent" name="eventsCheck" (change)="onChange($event, 'activeEvent')" class="form-check-input" id="eventsCheck">
+        <input type="checkbox" [(ngModel)]="activeEvent" name="eventsCheck" class="form-check-input" id="eventsCheck">
         <label class="form-check-label" for="eventsCheck">Events</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" [(ngModel)]="activeProgress" name="progressCheck" (change)="onChange($event, 'activeProgress')" class="form-check-input" id="progressCheck">
+        <input type="checkbox" [(ngModel)]="activeProgress" name="progressCheck" class="form-check-input" id="progressCheck">
         <label class="form-check-label" for="progressCheck">Progress</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" [(ngModel)]="activeName" name="nameCheck" (change)="onChange($event, 'activeName')" class="form-check-input" id="nameCheck">
+        <input type="checkbox" [(ngModel)]="activeName" name="nameCheck" class="form-check-input" id="nameCheck">
         <label class="form-check-label" for="nameCheck">Name Suggested</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" [(ngModel)]="activeGender" name="genderCheck" (change)="onChange($event, 'activeGender')" class="form-check-input" id="genderCheck">
+        <input type="checkbox" [(ngModel)]="activeGender" name="genderCheck" class="form-check-input" id="genderCheck">
         <label class="form-check-label" for="genderCheck">Gender Reveal</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" [(ngModel)]="activeRegistry" name="registryCheck" class="form-check-input" id="registryCheck">
+        <label class="form-check-label" for="genderCheck">Gift Registry</label>
+      </div>
+      <div class="form-group w-25">
+        <label for="title">Registry URL</label>
+        <input type="text" name="title" class="form-control" [(ngModel)]="registryUrl" id="title" placeholder="Title">
       </div>
       <div class="form-group">
         <button type="button" class="btn btn-info" (click)="onSave($event)">Save</button>
