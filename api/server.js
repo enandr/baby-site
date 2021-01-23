@@ -74,7 +74,7 @@ app.delete("/progress", (req, res) => {
 })
 
 app.get("/active", (req, res) => {
-  connection.query('Select * from active', function (err, rows, fields) {
+  connection.query('Select * from active_items', function (err, rows, fields) {
     if (err) throw err
     var returnedRows = rows;
     res.send(returnedRows);
