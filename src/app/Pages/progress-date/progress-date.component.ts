@@ -26,10 +26,9 @@ export class ProgressDateComponent implements OnInit {
   }
 
   async onSubmit(event, id) {
-
     await this.progressService.delete(id)
       .then(() => {
-        this.getProgress()
+        this.getProgress();
       })
       .catch(err => console.log(err));
   }

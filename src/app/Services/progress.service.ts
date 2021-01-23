@@ -58,4 +58,5 @@ export class ProgressService {
       .catch(err => console.log(err));
     return toReturn;
   }
+
 }

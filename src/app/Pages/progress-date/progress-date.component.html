@@ -7,7 +7,7 @@
         <div class="card-body">
           <h5 class="card-title">{{event.progress_title}}</h5>
           <p class="card-text">{{event.progress_details}}</p>
-          <button *ngIf="isAdmin" type="button" class="btn btn-danger mr-3" (click)="onSubmit($event, name.id)">Delete</button>
+          <button *ngIf="isAdmin" type="button" class="btn btn-danger mr-3" (click)="onSubmit($event, event.id)">Delete</button>
         </div>
       </div>
       <div class="col-6">
