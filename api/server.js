@@ -1,9 +1,8 @@
 require('dotenv').config();
 import Express from "express";
-var multer = require('multer');
+// var multer = require('multer');
 var cors = require('cors');
 var mysql = require('mysql');
-const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 var connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -11,18 +10,17 @@ var connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_DB
 });
-const storage = multer.diskStorage({
+c/* onst storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, '/uploads')
   },
   filename: function (req, file, cb) {
     cb(null, `${Date.now()}_${file.originalname}`)
   }
-});
-var upload = multer({ storage: storage });
+}); */
+// var upload = multer({ storage: storage });
 const app = Express();
 app.use(cors());
-app.use(fileUpload());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const port = 9000;
@@ -109,13 +107,13 @@ app.get("/photos", (req, res) => {
   }) */
 });
 
-app.post('/photos', upload.single('file'), function (req, res) {
+/* app.post('/photos', upload.single('file'), function (req, res) {
   const file = req.file;
   if (file) {
     res.json();
   } else {
-    // throw new Error('file error');
+    throw new Error('file error');
   }
-});
+}); */
 
 app.listen(port, () => console.log("listening on port: " + port))
