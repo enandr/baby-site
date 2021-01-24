@@ -117,8 +117,6 @@ app.post('/photos', upload.single('file'), function (req, res) {
       if (err) {
         return console.error(err);
       }
-
-      res.json({});
     });
     res.send('file');
   } else {
