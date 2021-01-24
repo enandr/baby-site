@@ -26,5 +26,6 @@ export class PhotosComponent implements OnInit {
 
   async onSubmit(event, id): Promise<void> {
     this.photoService.delete(id);
+    this.getImages();
   }
 }
