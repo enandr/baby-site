@@ -1,10 +1,11 @@
 require('dotenv').config();
+const fs = require('fs-extra');
 import Express from "express";
-var multer = require('multer');
-var cors = require('cors');
-var mysql = require('mysql');
+const multer = require('multer');
+const cors = require('cors');
+const mysql = require('mysql');
 const bodyParser = require('body-parser');
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
@@ -12,13 +13,13 @@ var connection = mysql.createConnection({
 });
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '../src/assets/images')
+    cb(null, 'uploads')
   },
   filename: function (req, file, cb) {
-    cb(null, `${Date.now()}_${file.originalname}`)
+    cb(null, file.originalname)
   }
 });
-var upload = multer({ storage: storage });
+const upload = multer({ storage: storage });
 const app = Express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -110,7 +111,15 @@ app.get("/photos", (req, res) => {
 app.post('/photos', upload.single('file'), function (req, res) {
   const file = req.file;
   if (file) {
-    res.json();
+    var filename = req.file.originalname;
+
+    fs.move('./uploads' + fileName, '../tempDir/' + 'testfolder' + '/' + fileName, function (err) {
+      if (err) {
+        return console.error(err);
+      }
+
+      res.json({});
+    });
     res.send('file');
   } else {
     throw new Error('file error');
