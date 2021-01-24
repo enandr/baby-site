@@ -107,13 +107,13 @@ app.get("/photos", (req, res) => {
   }) */
 });
 
-/* app.post('/photos', upload.single('file'), function (req, res) {
+app.post('/photos', upload.single('file'), function (req, res) {
   const file = req.file;
   if (file) {
     res.json();
   } else {
     throw new Error('file error');
   }
-}); */
+});
 
 app.listen(port, () => console.log("listening on port: " + port))
