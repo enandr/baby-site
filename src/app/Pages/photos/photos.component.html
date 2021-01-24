@@ -1,6 +1,6 @@
 <div *ngIf="images.length > 0">
   <div *ngFor="let image of images">
     <img src="{{image.url}}" alt="image" height="500px" width="500px">
-    <button type="button" class="btn btn-danger mr-3" (click)="onSubmit($event, image.id)">Delete</button>
+    <button *ngIf="isAdmin" type="button" class="btn btn-danger mr-3" (click)="onSubmit($event, image.id)">Delete</button>
   </div>
 </div>

@@ -7,9 +7,15 @@ import { PhotoService } from '../../Services/photo.service';
 })
 export class PhotosComponent implements OnInit {
   images: any[] = [];
+  isAdmin = false;
   constructor(private photoService: PhotoService) { }
 
   ngOnInit(): void {
+    if (window.sessionStorage.getItem('admin') === 'true') {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
     this.getImages();
   }
 
