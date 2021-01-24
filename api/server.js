@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
 });
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads')
+    cb(null, 'tempUploads')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
@@ -113,7 +113,7 @@ app.post('/photos', upload.single('file'), function (req, res) {
   if (file) {
     console.log(file.originalname);
 
-    fs.move('./uploads/' + file.originalname, './tempDir/' + file.originalname, function (err) {
+    fs.move('./tempUploads/' + file.originalname, '../src/assets/images/' + file.originalname, function (err) {
       if (err) {
         return console.error(err);
       }
