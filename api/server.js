@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
     cb(null, 'tempUploads')
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
+    cb(null, `${Date.now()}_${file.originalname}`)
   }
 });
 const upload = multer({ storage: storage });
@@ -101,11 +101,11 @@ app.put("/active", (req, res) => {
 })
 
 app.get("/photos", (req, res) => {
-  /* connection.query('Select * from active_items', function (err, rows, fields) {
+  connection.query('Select * from photos', function (err, rows, fields) {
     if (err) throw err
     var returnedRows = rows;
     res.send(returnedRows);
-  }) */
+  })
 });
 
 app.post('/photos', upload.single('file'), function (req, res) {
@@ -118,7 +118,13 @@ app.post('/photos', upload.single('file'), function (req, res) {
         return console.error(err);
       }
     });
-    res.send('file');
+
+    connection.query("INSERT INTO `expanding_family`.`photos` (`url`) VALUES ('../src/assets/images/" + file.originalname + "')", function (err, rows, fields) {
+      if (err) throw err
+      // var returnedRows = rows;
+      // res.send(returnedRows);
+      res.send('Success');
+    })
   } else {
   }
 });

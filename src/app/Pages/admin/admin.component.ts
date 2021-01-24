@@ -78,21 +78,9 @@ export class AdminComponent implements OnInit {
   async onUpload(event): Promise<void> {
     const formdata = new FormData();
     formdata.append('file', this.file)
-    await fetch('http://3.134.168.146:9000/photos', {
-      method: 'POST',
-      body: formdata
-    })
-      // .then(response => response.json())
-      .then(data => {
-        console.log(data)
-      })
-      .catch(error => {
-        console.error(error)
-      })
-    /* await this.httpClient.post("http://3.134.168.146:9000/photos", formdata)
-      .subscribe(data => {
-        console.log(data);
-      }) */
+    await this.photoService.post(formdata)
+      .then(res => console.log(res.body))
+      .catch(err => console.log(err));
   }
 
 

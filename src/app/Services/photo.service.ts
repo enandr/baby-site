@@ -9,20 +9,17 @@ export class PhotoService {
 
   async post(file): Promise<any> {
     let toReturn = null;
-    const postBody = JSON.stringify({
-      "file": file
+    await fetch('http://3.134.168.146:9000/photos', {
+      method: 'POST',
+      body: file
     })
-    const options = {
-      headers: { "Content-type": "application/json; charset=UTF-8" },
-      method: 'post',
-      body: postBody
-    }
-    await fetch('http://3.134.168.146:9000/photos', options)
-      // .then(res => res.json())
-      .then(res => {
-        toReturn = res;
+      // .then(response => response.json())
+      .then(data => {
+        toReturn = data;
       })
-      .catch(err => console.log(err));
+      .catch(error => {
+        console.error(error)
+      })
     return toReturn;
   }
 }
