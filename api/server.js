@@ -132,7 +132,7 @@ app.post('/photos', upload.single('file'), function (req, res) {
 });
 
 app.delete("/photos", (req, res) => {
-  const path = '';
+  let path = '';
   connection.query("SELECT * FROM `expanding_family`.`photos` WHERE (`id` = '" + req.body.id + "')", function (err, rows, fields) {
     if (err) throw err
     path = rows[0].url;
