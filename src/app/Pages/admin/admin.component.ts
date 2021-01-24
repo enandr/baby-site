@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProgressService } from '../../Services/progress.service';
 import { ActiveService } from '../../Services/active.service';
 import { PhotoService } from '../../Services/photo.service';
-import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -21,7 +20,7 @@ export class AdminComponent implements OnInit {
   registryUrl: string;
   file: any;
   isAdmin = false;
-  constructor(private progressService: ProgressService, private activeService: ActiveService, private photoService: PhotoService, private httpClient: HttpClient) { }
+  constructor(private progressService: ProgressService, private activeService: ActiveService, private photoService: PhotoService) { }
 
   ngOnInit(): void {
     if (window.sessionStorage.getItem('admin') === 'true'){

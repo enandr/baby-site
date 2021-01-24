@@ -7,6 +7,17 @@ export class PhotoService {
 
   constructor() { }
 
+  async get(): Promise<any> {
+    let toReturn = [];
+    await fetch('http://3.134.168.146:9000/photos')
+      .then(res => res.json())
+      .then(jsonRes => {
+        toReturn = jsonRes;
+      })
+      .catch(err => console.log(err));
+    return toReturn;
+  }
+
   async post(file): Promise<any> {
     let toReturn = null;
     await fetch('http://3.134.168.146:9000/photos', {

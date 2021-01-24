@@ -12,6 +12,7 @@ import { ProgressDateComponent } from './Pages/progress-date/progress-date.compo
 import { SuggestANameComponent } from './Pages/suggest-a-name/suggest-a-name.component';
 import { ViewNamesComponent } from './Pages/view-names/view-names.component';
 import { AdminComponent } from './Pages/admin/admin.component';
+import { PhotosComponent } from './Pages/photos/photos.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AdminComponent } from './Pages/admin/admin.component';
     ProgressDateComponent,
     SuggestANameComponent,
     ViewNamesComponent,
-    AdminComponent
+    AdminComponent,
+    PhotosComponent
   ],
   imports: [
     BrowserModule,
