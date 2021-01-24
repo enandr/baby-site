@@ -135,19 +135,20 @@ app.delete("/photos", (req, res) => {
   let path = '';
   connection.query("SELECT * FROM `expanding_family`.`photos` WHERE (`id` = '" + req.body.id + "')", function (err, rows, fields) {
     if (err) throw err
-    path = '../src/dist/baby-site' + rows[0].url;
+    path = '../dist/baby-site/assets/images' + rows[0].url;
     console.log(path);
-  })
-  /* connection.query("DELETE FROM `expanding_family`.`photos` WHERE (`id` = '" + req.body.id + "')", function (err, rows, fields) {
-    if (err) throw err
-    fs.remove('/tmp/myfile', err => {
-      if (err) return console.error(err)
-      console.log('success!')
+    connection.query("DELETE FROM `expanding_family`.`photos` WHERE (`id` = '" + req.body.id + "')", function (err, rows, fields) {
+      if (err) throw err
+      fs.remove(path, err => {
+        if (err) return console.error(err)
+        console.log('success!')
+      })
+      // var returnedRows = rows;
+      // res.send(returnedRows);
+      res.send('Success');
     })
-    // var returnedRows = rows;
-    // res.send(returnedRows);
-    res.send('Success');
-  }) */
+
+  })
 })
 
 app.listen(port, () => console.log("listening on port: " + port))
