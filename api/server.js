@@ -112,15 +112,16 @@ app.get("/photos", (req, res) => {
 app.post('/photos', upload.single('file'), function (req, res) {
   const file = req.file;
   if (file) {
-    const filename = `${dateAdd}_${file.originalname}`
-
-    fs.move(`./tempUploads/${filename}`, `../dist/baby-site/assets/images/${filename}`, function (err) {
+    const filename = `${dateAdd}_${file.originalname}`;
+    const tempdir = `./tempUploads/${filename}`;
+    const finaldir = `../dist/baby-site/assets/images/${filename}`;
+    fs.move(tempdir, finaldir, function (err) {
       if (err) {
         return console.error(err);
       }
     });
 
-    connection.query("INSERT INTO `expanding_family`.`photos` (`url`) VALUES ('../src/assets/images/" + file.originalname + "')", function (err, rows, fields) {
+    connection.query("INSERT INTO `expanding_family`.`photos` (`url`) VALUES ('" + finaldir +"')", function (err, rows, fields) {
       if (err) throw err
       // var returnedRows = rows;
       // res.send(returnedRows);
