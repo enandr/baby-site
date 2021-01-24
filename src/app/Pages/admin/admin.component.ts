@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProgressService } from '../../Services/progress.service';
 import { ActiveService } from '../../Services/active.service';
 import { PhotoService } from '../../Services/photo.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -20,7 +21,7 @@ export class AdminComponent implements OnInit {
   registryUrl: string;
   file: any;
   isAdmin = false;
-  constructor(private progressService: ProgressService, private activeService: ActiveService, private photoService: PhotoService) { }
+  constructor(private progressService: ProgressService, private activeService: ActiveService, private photoService: PhotoService, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     if (window.sessionStorage.getItem('admin') === 'true'){
@@ -75,12 +76,12 @@ export class AdminComponent implements OnInit {
   }
 
   async onUpload(event): Promise<void> {
-    console.log(this.file);
-    await this.photoService.post(this.file)
-      .then(res => {
-        console.log(res);
+    const formdata = new FormData();
+    formdata.append('file', this.file)
+    this.httpClient.post("http://3.134.168.146:9000/photos", formdata)
+      .subscribe(data => {
+        console.log(data);
       })
-      .catch(err => console.log(err));
   }
 
 

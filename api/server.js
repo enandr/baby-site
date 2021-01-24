@@ -1,5 +1,6 @@
 require('dotenv').config();
 import Express from "express";
+var multer = require('multer');
 var cors = require('cors');
 var mysql = require('mysql');
 const fileUpload = require('express-fileupload');
@@ -10,7 +11,15 @@ var connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_DB
 });
-
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}_${file.originalname}`)
+  }
+});
+var upload = multer({ storage: storage });
 const app = Express();
 app.use(cors());
 app.use(fileUpload());
@@ -100,25 +109,13 @@ app.get("/photos", (req, res) => {
   }) */
 });
 
-app.post('/photos', function (req, res) {
-  let sampleFile;
-  let uploadPath;
-
-  if (!req.file || Object.keys(req.file).length === 0) {
-    return res.status(400).send('No files were uploaded.');
+app.post('/photos', upload.single('file'), function (req, res) {
+  const file = req.file;
+  if (file) {
+    res.json();
+  } else {
+    // throw new Error('file error');
   }
-
-  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-  sampleFile = req.files.sampleFile;
-  uploadPath = __dirname + '/uploads/' + sampleFile.name;
-
-  // Use the mv() method to place the file somewhere on your server
-  sampleFile.mv(uploadPath, function (err) {
-    if (err)
-      return res.status(500).send(err);
-
-    res.send('File uploaded!');
-  });
 });
 
 app.listen(port, () => console.log("listening on port: " + port))
