@@ -112,14 +112,15 @@ app.post('/photos', upload.single('file'), function (req, res) {
   const file = req.file;
   if (file) {
     var filename = req.file.originalname;
+    console.log(file);
 
-    fs.move('./uploads' + fileName, '../tempDir/' + 'testfolder' + '/' + fileName, function (err) {
+   /*  fs.move('./uploads' + fileName, '../tempDir/' + 'testfolder' + '/' + fileName, function (err) {
       if (err) {
         return console.error(err);
       }
 
       res.json({});
-    });
+    }); */
     res.send('file');
   } else {
     throw new Error('file error');
