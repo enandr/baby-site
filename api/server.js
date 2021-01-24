@@ -111,7 +111,7 @@ app.post('/photos', upload.single('file'), function (req, res) {
   const file = req.file;
   if (file) {
     res.json();
-    res.send(file);
+    res.send('file');
   } else {
     throw new Error('file error');
   }
