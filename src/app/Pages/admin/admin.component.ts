@@ -78,7 +78,7 @@ export class AdminComponent implements OnInit {
   async onUpload(event): Promise<void> {
     const formdata = new FormData();
     formdata.append('file', this.file)
-    this.httpClient.post("http://3.134.168.146:9000/photos", formdata)
+    await this.httpClient.post("http://3.134.168.146:9000/photos", formdata)
       .subscribe(data => {
         console.log(data);
       })
