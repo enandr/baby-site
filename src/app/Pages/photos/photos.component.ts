@@ -34,4 +34,7 @@ export class PhotosComponent implements OnInit {
     this.photoService.delete(id);
     this.getImages();
   }
+
+  async onSubmitFeatured(event, id): Promise<void> {
+  }
 }
