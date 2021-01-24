@@ -114,7 +114,7 @@ app.post('/photos', upload.single('file'), function (req, res) {
   if (file) {
     const filename = `${dateAdd}_${file.originalname}`
 
-    fs.move(`./tempUploads/${filename}`, `../src/assets/images/${filename}`, function (err) {
+    fs.move(`./tempUploads/${filename}`, `../dist/baby-site/assets/images/${filename}`, function (err) {
       if (err) {
         return console.error(err);
       }
