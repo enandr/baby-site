@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_DB
 });
-c/* onst storage = multer.diskStorage({
+/* const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, '/uploads')
   },
