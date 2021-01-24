@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
     this.links = [
       { url: '/announcements', title: 'ANNOUNCEMENTS', active: this.announcementsActive},
       { url: '/events', title: 'EVENTS', active: this.eventsActive  },
-      { url: '/photos', title: 'PHOTOS', active: false  },
+      { url: '/photos', title: 'PHOTOS', active: true  },
       { url: '/progress', title: 'PROGRESS', active: this.progressActive  },
       { url: '/suggestaname', title: 'SUGGEST A NAME', class: 'text-names', active: this.suggestANameActive  },
       { url: this.registryUrl, title: 'GIFT REGISTRY', class: 'text-registry', active: this.registryActive  },
