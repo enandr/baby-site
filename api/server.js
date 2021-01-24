@@ -111,7 +111,7 @@ app.get("/photos", (req, res) => {
 app.post('/photos', upload.single('file'), function (req, res) {
   const file = req.file;
   if (file) {
-    var filename = req.file.originalname;
+    var filename = file.originalname;
     console.log(file);
 
    /*  fs.move('./uploads' + fileName, '../tempDir/' + 'testfolder' + '/' + fileName, function (err) {
