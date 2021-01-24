@@ -10,14 +10,14 @@ export class PhotoService {
   async post(file): Promise<any> {
     let toReturn = null;
     const postBody = JSON.stringify({
-      "img": file
+      "file": file
     })
     const options = {
       headers: { "Content-type": "application/json; charset=UTF-8" },
       method: 'post',
       body: postBody
     }
-    await fetch('http://3.134.168.146:9000/progress', options)
+    await fetch('http://3.134.168.146:9000/photos', options)
       // .then(res => res.json())
       .then(res => {
         toReturn = res;
