@@ -33,4 +33,24 @@ export class PhotoService {
       })
     return toReturn;
   }
+
+  async delete(id): Promise<any> {
+    let toReturn = null;
+    console.log(id);
+    const postBody = JSON.stringify({
+      "id": id
+    })
+    const options = {
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+      method: 'delete',
+      body: postBody
+    }
+    await fetch('http://3.134.168.146:9000/photos', options)
+      // .then(res => res.json())
+      .then(res => {
+        toReturn = res;
+      })
+      .catch(err => console.log(err));
+    return toReturn;
+  }
 }
