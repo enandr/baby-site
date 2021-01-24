@@ -113,7 +113,7 @@ app.post('/photos', upload.single('file'), function (req, res) {
   if (file) {
     console.log(file.originalname);
 
-    fs.move('./uploads/' + file.originalname, './tempDir/' + 'testfolder' + '/' + file.originalname, function (err) {
+    fs.move('./uploads/' + file.originalname, './tempDir/' + file.originalname, function (err) {
       if (err) {
         return console.error(err);
       }
@@ -122,7 +122,6 @@ app.post('/photos', upload.single('file'), function (req, res) {
     });
     res.send('file');
   } else {
-    throw new Error('file error');
   }
 });
 
