@@ -139,15 +139,14 @@ app.delete("/photos", (req, res) => {
     console.log(path);
     connection.query("DELETE FROM `expanding_family`.`photos` WHERE (`id` = '" + req.body.id + "')", function (err, rows, fields) {
       if (err) throw err
-      fs.remove(path, err => {
-        if (err) return console.error(err)
-        console.log('success!')
-      })
       // var returnedRows = rows;
       // res.send(returnedRows);
       res.send('Success');
     })
-
+    fs.remove(path, err => {
+      if (err) return console.error(err)
+      console.log('removed: ' + path)
+    })
   })
 })
 
