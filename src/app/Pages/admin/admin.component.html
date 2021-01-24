@@ -21,47 +21,65 @@
       </form>
     </div>
   </div>
+
   <div class="section">
-    <form>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" [(ngModel)]="activeAnnouncements" name="announcementsCheck" id="announcementsCheck">
-        <label class="form-check-label" for="announcementsCheck">Announcements</label>
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" [(ngModel)]="activeEvent" name="eventsCheck" class="form-check-input" id="eventsCheck">
-        <label class="form-check-label" for="eventsCheck">Events</label>
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" [(ngModel)]="activeProgress" name="progressCheck" class="form-check-input" id="progressCheck">
-        <label class="form-check-label" for="progressCheck">Progress</label>
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" [(ngModel)]="activeName" name="nameCheck" class="form-check-input" id="nameCheck">
-        <label class="form-check-label" for="nameCheck">Name Suggested</label>
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" [(ngModel)]="activeGender" name="genderCheck" class="form-check-input" id="genderCheck">
-        <label class="form-check-label" for="genderCheck">Gender Reveal</label>
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" [(ngModel)]="activeRegistry" name="registryCheck" class="form-check-input" id="registryCheck">
-        <label class="form-check-label" for="registryCheck">Gift Registry</label>
-      </div>
-      <div class="form-group w-25">
-        <label for="title">Registry URL</label>
-        <input type="text" name="title" class="form-control" [(ngModel)]="registryUrl" id="title" placeholder="Title">
-      </div>
-      <div class="form-group">
-        <button type="button" class="btn btn-info" (click)="onSave($event)">Save</button>
-      </div>
-    </form>
+    <h1 class="text-center my-5">Activate Or Deactivate Pages</h1>
+    <div class="container pb-3">
+      <form class="">
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="activeAnnouncements" name="announcementsCheck" id="announcementsCheck">
+          <label class="form-check-label" for="announcementsCheck">Announcements</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" [(ngModel)]="activeEvent" name="eventsCheck" class="form-check-input" id="eventsCheck">
+          <label class="form-check-label" for="eventsCheck">Events</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" [(ngModel)]="activeProgress" name="progressCheck" class="form-check-input" id="progressCheck">
+          <label class="form-check-label" for="progressCheck">Progress</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" [(ngModel)]="activeName" name="nameCheck" class="form-check-input" id="nameCheck">
+          <label class="form-check-label" for="nameCheck">Name Suggested</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" [(ngModel)]="activeGender" name="genderCheck" class="form-check-input" id="genderCheck">
+          <label class="form-check-label" for="genderCheck">Gender Reveal</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" [(ngModel)]="activeRegistry" name="registryCheck" class="form-check-input" id="registryCheck">
+          <label class="form-check-label" for="registryCheck">Gift Registry</label>
+        </div>
+        <div class="form-group w-25">
+          <label for="title">Registry URL</label>
+          <input type="text" name="title" class="form-control" [(ngModel)]="registryUrl" id="title" placeholder="Title">
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-info" (click)="onSave($event)">Save</button>
+        </div>
+      </form>
+    </div>
   </div>
+
   <div class="section">
     <h1 class="text-center">Add A Photo</h1>
+    <div class="d-flex justify-content-center align-items-center my-2 h-100">
+      <form name="babyNameForm" class="w-50">
+        <div class="form-group">
+          <label for="formFile" class="form-label">Default file input example</label>
+          <input class="form-control" #fileUploader type="file" id="file" (change)="chooseFile($event)">
+        </div>
+        <div class="form-group d-flex justify-content-center align-items-center">
+          <button type="button" class="btn btn-info" (click)="onUpload($event)">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
+
   <div class="section">
     <h1 class="text-center">Add An Event Item</h1>
   </div>
+
   <div class="section">
     <h1 class="text-center">Add An Announcement Item</h1>
   </div>

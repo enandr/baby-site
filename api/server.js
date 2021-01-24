@@ -90,4 +90,16 @@ app.put("/active", (req, res) => {
   })
 })
 
+app.get("/photos", (req, res) => {
+  /* connection.query('Select * from active_items', function (err, rows, fields) {
+    if (err) throw err
+    var returnedRows = rows;
+    res.send(returnedRows);
+  }) */
+});
+
+app.post('/photos', function (req, res) {
+  console.log(req.files.img); // the uploaded file object
+});
+
 app.listen(port, () => console.log("listening on port: " + port))
