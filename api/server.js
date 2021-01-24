@@ -1,6 +1,6 @@
 require('dotenv').config();
 import Express from "express";
-// var multer = require('multer');
+var multer = require('multer');
 var cors = require('cors');
 var mysql = require('mysql');
 const bodyParser = require('body-parser');
@@ -10,15 +10,15 @@ var connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_DB
 });
-/* const storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, '/uploads')
   },
   filename: function (req, file, cb) {
     cb(null, `${Date.now()}_${file.originalname}`)
   }
-}); */
-// var upload = multer({ storage: storage });
+});
+var upload = multer({ storage: storage });
 const app = Express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
