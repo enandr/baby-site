@@ -135,7 +135,7 @@ app.delete("/photos", (req, res) => {
   let path = '';
   connection.query("SELECT * FROM `expanding_family`.`photos` WHERE (`id` = '" + req.body.id + "')", function (err, rows, fields) {
     if (err) throw err
-    path = '../dist/baby-site' + rows[0].url;
+    path = '../baby-site' + rows[0].url;
     console.log(path);
     connection.query("DELETE FROM `expanding_family`.`photos` WHERE (`id` = '" + req.body.id + "')", function (err, rows, fields) {
       if (err) throw err
