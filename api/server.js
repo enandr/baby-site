@@ -11,12 +11,13 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_DB
 });
+const dateAdd = Date.now()
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'tempUploads')
   },
   filename: function (req, file, cb) {
-    cb(null, `${Date.now()}_${file.originalname}`)
+    cb(null, `${dateAdd}_${file.originalname}`)
   }
 });
 const upload = multer({ storage: storage });
@@ -111,9 +112,9 @@ app.get("/photos", (req, res) => {
 app.post('/photos', upload.single('file'), function (req, res) {
   const file = req.file;
   if (file) {
-    console.log(file.originalname);
+    const filename = `${dateAdd}_${file.originalname}`
 
-    fs.move(`./tempUploads/${Date.now()}_${file.originalname}`, `../src/assets/images/${Date.now()}_${file.originalname}`, function (err) {
+    fs.move(`./tempUploads/${filename}`, `../src/assets/images/${filename}`, function (err) {
       if (err) {
         return console.error(err);
       }
