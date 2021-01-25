@@ -2,6 +2,7 @@ require('dotenv').config();
 const fs = require('fs-extra');
 import Express from "express";
 const multer = require('multer');
+const aws = require('aws-sdk');
 const cors = require('cors');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
@@ -11,14 +12,31 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_DB
 });
+aws.config.update({
+  secretAccessKey: process.env.secretAccessKey,
+  accessKeyId: process.env.accessKeyId,
+  region: process.env.region,
+});
+const s3 = new aws.S3();
 const dateAdd = Date.now()
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'tempUploads')
+const upload = multer({
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype === 'application/octet-stream' || file.mimetype === 'video/mp4'
+      || file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type'), false);
+    }
   },
-  filename: function (req, file, cb) {
-    cb(null, `${dateAdd}_${file.originalname}`)
-  }
+  storage: multerS3({
+    acl: 'public-read',
+    s3,
+    bucket: 'babyenand',
+    key: function (req, file, cb) {
+      req.file = Date.now() + file.originalname;
+      cb(null, Date.now() + file.originalname);
+    }
+  })
 });
 const upload = multer({ storage: storage });
 const app = Express();
@@ -109,26 +127,8 @@ app.get("/photos", (req, res) => {
   })
 });
 
-app.post('/photos', upload.single('file'), function (req, res) {
-  const file = req.file;
-  if (file) {
-    const filename = `${dateAdd}_${file.originalname}`;
-    const tempdir = `./tempUploads/${filename}`;
-    const finaldir = `/assets/images/${filename}`;
-    fs.move(tempdir, '../baby-site' + finaldir, function (err) {
-      if (err) {
-        return console.error(err);
-      }
-    });
-
-    connection.query("INSERT INTO `expanding_family`.`photos` (`url`) VALUES ('" + finaldir +"')", function (err, rows, fields) {
-      if (err) throw err
-      // var returnedRows = rows;
-      // res.send(returnedRows);
-      res.send('Success');
-    })
-  } else {
-  }
+app.post('/upload', upload.array('file', 1), (req, res) => {
+  res.send({ file: req.file });
 });
 
 app.delete("/photos", (req, res) => {
