@@ -38,7 +38,6 @@ const upload = multer({
     }
   })
 });
-const upload = multer({ storage: storage });
 const app = Express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
