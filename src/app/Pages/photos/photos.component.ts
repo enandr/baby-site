@@ -26,7 +26,6 @@ export class PhotosComponent implements OnInit {
         img.url = 'http://3.134.168.146' + img.url;
       })
       this.images = tempImgs;
-      console.log(this.images);
     }
   }
 
