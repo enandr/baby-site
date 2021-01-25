@@ -2,6 +2,7 @@ require('dotenv').config();
 const fs = require('fs-extra');
 import Express from "express";
 const multer = require('multer');
+const multerS3 = require('multer-s3');
 const aws = require('aws-sdk');
 const cors = require('cors');
 const mysql = require('mysql');
