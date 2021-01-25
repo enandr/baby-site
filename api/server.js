@@ -93,7 +93,17 @@ app.get("/active", (req, res) => {
 });
 
 app.put("/active", (req, res) => {
-  connection.query("UPDATE `expanding_family`.`active_items` SET `name_suggestion` = '" + req.body.name_suggestion + "', `gender_reveal` = '" + req.body.gender_reveal + "', `progress` = '" + req.body.progress + "', `announcments` = '" + req.body.announcments + "', `events` = '" + req.body.events + "', `registry` = '" + req.body.registry + "', `registry_url` = '" + req.body.registry_url + "', `photos` = '" + req.body.photos + "' WHERE (`id` = '1')", function (err, rows, fields) {
+  req.body.baby_gender = '';
+  connection.query("UPDATE `expanding_family`.`active_items` SET `name_suggestion` = '" + req.body.name_suggestion +
+  "', `gender_reveal` = '" + req.body.gender_reveal +
+  "', `progress` = '" + req.body.progress +
+  "', `announcments` = '" + req.body.announcments +
+  "', `events` = '" + req.body.events +
+  "', `registry` = '" + req.body.registry +
+  "', `registry_url` = '" + req.body.registry_url +
+  "', `baby_gender` = '" + req.body.baby_gender +
+  "', `photos` = '" + req.body.photos +
+  "' WHERE (`id` = '1')", function (err, rows, fields) {
     if (err) throw err
     // var returnedRows = rows;
     // res.send(returnedRows);
