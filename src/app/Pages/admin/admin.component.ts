@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
   progressDate: any;
   activeAnnouncements: boolean;
   activeEvent: boolean;
+  activePhoto: boolean;
   activeProgress: boolean;
   activeName: boolean;
   activeGender: boolean;
@@ -41,6 +42,7 @@ export class AdminComponent implements OnInit {
         res.events = (res.events == 'true');
         res.progress = (res.progress == 'true');
         res.registry = (res.registry == 'true');
+        res.photos = (res.photos == 'true');
         this.registryUrl = res.registry_url;
         this.activeRegistry = res.registry;
         this.activeAnnouncements = res.announcments;
@@ -48,6 +50,8 @@ export class AdminComponent implements OnInit {
         this.activeProgress = res.progress;
         this.activeName = res.name_suggestion;
         this.activeGender = res.gender_reveal;
+        this.activePhoto = res.photos;
+        console.log(res);
       })
   }
 
@@ -63,7 +67,7 @@ export class AdminComponent implements OnInit {
   }
 
   async onSave() {
-    await this.activeService.update(this.activeName, this.activeGender, this.activeProgress, this.activeAnnouncements, this.activeEvent, this.activeRegistry, this.registryUrl)
+    await this.activeService.update(this.activeName, this.activeGender, this.activeProgress, this.activeAnnouncements, this.activeEvent, this.activeRegistry, this.registryUrl, this.activePhoto)
       .then(res => {
         location.reload();
       })

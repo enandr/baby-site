@@ -17,7 +17,7 @@ export class ActiveService {
     return toReturn;
   }
 
-  async update(name, gender, progress, announcements, events, registry, registry_url): Promise<any> {
+  async update(name, gender, progress, announcements, events, registry, registry_url, photos): Promise<any> {
     let toReturn = null;
     const postBody = JSON.stringify({
         "id": 1,
@@ -27,7 +27,8 @@ export class ActiveService {
         "announcments": announcements + '',
         "events": events + '',
         "registry": registry + '',
-        "registry_url": registry_url + ''
+        "registry_url": registry_url + '',
+        "photos": photos + ''
     })
     const options = {
       headers: { "Content-type": "application/json; charset=UTF-8" },
