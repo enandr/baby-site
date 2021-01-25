@@ -128,7 +128,7 @@ app.get("/photos", (req, res) => {
   })
 });
 
-app.post('/photos', upload.array('file', 1), (req, res) => {
+app.put('/photos', upload.array('file', 1), (req, res) => {
   res.send({ file: req.file });
 });
 

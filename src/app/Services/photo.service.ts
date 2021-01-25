@@ -21,7 +21,7 @@ export class PhotoService {
   async post(file): Promise<any> {
     let toReturn = null;
     await fetch('http://3.134.168.146:9000/photos', {
-      method: 'POST',
+      method: 'PUT',
       body: file
     })
       // .then(response => response.json())
