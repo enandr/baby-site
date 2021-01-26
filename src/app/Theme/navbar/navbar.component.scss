@@ -1,4 +1,5 @@
 $link-color: #ececec;
+
 .navbar-bg {
   color: $link-color;
   a:link {
@@ -7,15 +8,15 @@ $link-color: #ececec;
   a:visited {
     color: $link-color;
   }
-  :not(:first-child) a:hover {
+  a:hover {
     filter: brightness(70%);
   }
   a:active {
     color: #ececec;
   }
   background-color: #222831;
-
 }
+
 .text-names{
   color: rgb(0, 217, 255) !important;
   font-weight: bold;
@@ -26,6 +27,7 @@ $link-color: #ececec;
   font-weight: bold;
   text-decoration: underline;
 }
+
 .text-gender-reveal{
   color: rgb(255, 25, 0) !important;
   font-weight: bold;
@@ -35,4 +37,8 @@ $link-color: #ececec;
 .stickey {
   position: sticky;
   top: 0;
+}
+
+.yellow {
+  color: rgb(194, 194, 2) !important;
 }

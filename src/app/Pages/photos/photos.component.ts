@@ -24,6 +24,9 @@ export class PhotosComponent implements OnInit {
     if (tempImgs.length > 0){
       tempImgs.map(img => {
         img.url = 'http://3.134.168.146' + img.url;
+        if (!img.title){
+          img.title = 'Untitled'
+        }
       })
       this.images = tempImgs;
     }
@@ -35,5 +38,13 @@ export class PhotosComponent implements OnInit {
   }
 
   async onSubmitFeatured(event, id): Promise<void> {
+  }
+
+  isOdd(num): boolean {
+    if (num % 2 === 1){
+      return true;
+    }
+    return false;
+
   }
 }

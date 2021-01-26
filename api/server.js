@@ -94,7 +94,8 @@ app.get("/active", (req, res) => {
 
 app.put("/active", (req, res) => {
   req.body.baby_gender = '';
-  connection.query("UPDATE `expanding_family`.`active_items` SET `name_suggestion` = '" + req.body.name_suggestion +
+  connection.query("UPDATE `expanding_family`.`active_items` SET" +
+  " `name_suggestion` = '" + req.body.name_suggestion +
   "', `gender_reveal` = '" + req.body.gender_reveal +
   "', `progress` = '" + req.body.progress +
   "', `announcments` = '" + req.body.announcments +

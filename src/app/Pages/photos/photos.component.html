@@ -1,7 +1,35 @@
-<div *ngIf="images.length > 0">
-  <div *ngFor="let image of images">
-    <img src="{{image.url}}" alt="image" height="500px" width="500px">
-    <button *ngIf="isAdmin" type="button" class="btn btn-danger mr-3" (click)="onSubmit($event, image.id)">Delete</button>
-    <button *ngIf="isAdmin" type="button" class="btn btn-info mr-3" (click)="onSubmitFeatured($event, image.id)">Set Featured Image</button>
+<div *ngIf="images.length > 0" class="mt-5 h-100 container">
+  <div *ngFor="let image of images; let i = index" class="row mb-5">
+    <div *ngIf="!isOdd(i) || i === 0; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <div class="col-5 d-flex flex-column justify-content-center align-items-end">
+        <h2 class="img-title">{{image.title}}</h2>
+        <p class="img-description">{{image.description}}</p>
+      </div>
+      <div class="col-5">
+        <img class="gallery-image" src="{{image.url}}" alt="image">
+      </div>
+      <div *ngIf="isAdmin" class="col-2 d-flex flex-column justify-content-center align-items-start">
+        <button *ngIf="isAdmin" type="button" class="btn btn-danger mr-3" (click)="onSubmit($event, image.id)">Delete</button>
+        <button *ngIf="isAdmin" type="button" class="btn btn-info mr-3" (click)="onSubmitFeatured($event, image.id)">Set Featured Image</button>
+      </div>
+    </ng-template>
+
+    <ng-template #elseBlock>
+      <div class="col-5">
+        <img class="gallery-image" src="{{image.url}}" alt="image">
+      </div>
+      <div class="col-5 d-flex flex-column justify-content-center align-items-start">
+        <h2 class="img-title">{{image.title}}</h2>
+        <p class="img-description">{{image.description}}</p>
+      </div>
+      <div *ngIf="isAdmin" class="col-2 d-flex flex-column justify-content-center align-items-start">
+        <button *ngIf="isAdmin" type="button" class="btn btn-danger mr-3"
+          (click)="onSubmit($event, image.id)">Delete</button>
+        <button *ngIf="isAdmin" type="button" class="btn btn-info mr-3" (click)="onSubmitFeatured($event, image.id)">Set
+          Featured Image</button>
+      </div>
+    </ng-template>
+
   </div>
 </div>
